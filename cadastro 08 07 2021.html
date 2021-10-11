@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>CRUD</title>
+    <style type="text/css">
+    
+    
+    body{
+      background-image: linear-gradient(135deg,  rgb(150, 33, 33) 330px,rgb(255, 255, 255) 450px, rgb(15, 100, 52)  900px); 
+      background-image: linear-gradient(145deg, rgb(150, 33, 33) 230px,rgb(255, 255, 255) 450px, rgb(15, 100, 52)  900px);
+        }
+  
+      .textosimples{
+            color: hsl(0, 0%, 0%);
+            font-family:"New Century Schoolbook", "TeX Gyre Schola", serif;
+            font-style: italic;
+            font-size: 20px;
+           }
+
+           input {
+              color:#0059ff;
+              font-family: "Calisto MT", sans-serif;
+              border: 9px groove #2081ff;
+              padding: 10px 10px;
+              text-align: center;
+              text-decoration: none;
+              font-size: 16px;
+              box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+                }
+               
+       button {
+              margin-left: auto;
+              margin-right: auto;
+              color:#0000CD;
+              font-family: "Calisto MT", sans-serif; 
+              border: 10px groove #2081ff;
+              padding: 10px 10px;
+              text-align: center;
+              text-decoration: none;
+              font-size: 16px;
+              box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+                }
+
+
+       
+       </style>
+
+</head>
+<body>
+
+  <center>
+  
+  <div  class="textosimples">Nome do filme</div><br><br><input type="text" id="inpnomedofilme" placeholder="X-MEN"></br></br>
+  <div class="textosimples"> Ano de Lançamento</div><br><br><input type="text" id="inplancamento" placeholder="2000"></br></br>
+    <div class="textosimples">  Duração<br><br></div><input  type="text" id="inpduracao" placeholder="60 MIN"></br></br>
+      <div class="textosimples"> Genero<br><br></div><input  type="text" id="inpgenero" placeholder="Ação"></br></br>
+        <div class="textosimples">Idioma Original<br></div><br><br><input  type="text" id="inpidiomaoriginal" placeholder="Ingles"></br></br>
+          <div class="textosimples"> Opções de Idioma</div><br><br><input type="text" id="inpopcoesdeidiomas" placeholder="Ingles,Portugues,Japones"></br></br>
+            <div class="textosimples">  Diretor<br><br></div><input type="text" id="inpdiretor" placeholder="Quentin Tarantino"></br></br>
+              <div class="textosimples">  Nota da Critica<br<br></div><input type="text" id="inpnota1" placeholder="8.0"></br></br>
+                <div class="textosimples">  Nota Pessoal<br><br></div><input type="text" id="inpnota2" placeholder="8.0"></br></br>
+    <br>
+    <br><button onclick="cadastrar()">Cadastrar</button></br>
+    <br><button onclick="pesquisar()">Procurar</button> </br>
+    <br> <button onclick="editar()">Editar</button> </br>
+    <br> <button onclick="limpar()">limpar</button> </br>
+    <br><button onclick="teste()">teste</button> </br>
+
+
+    
+    <div id="divsaida"></div></br>
+
+  </center>
+    
+    <script>
+     
+     document.getElementById("inpnomedofilme").focus()
+     var filme= new Array
+     var Lancamento= new Array
+     var duracao= new Array
+     var genero= new Array
+     var idiomaoriginal= new Array
+     var opcaodeidiomas= new Array
+     var diretor= new Array
+     var nota1= new Array
+     var nota2= new Array
+     var ultimoregistropesquisado
+     
+     function cadastrar()
+     {
+
+        filme[filme.length]=document.getElementById("inpnomedofilme").value
+        document.getElementById("inpnomedofilme").value=""
+
+        Lancamento[Lancamento.length]=document.getElementById("inplancamento").value
+        document.getElementById("inplancamento").value=""
+        
+       
+        duracao[duracao.length]=document.getElementById("inpduracao").value
+        document.getElementById("inpduracao").value=""
+        
+        genero[genero.length]=document.getElementById("inpgenero").value
+        document.getElementById("inpgenero").value=""
+
+        idiomaoriginal[idiomaoriginal.length]=document.getElementById("inpidiomaoriginal").value
+        document.getElementById("inpidiomaoriginal").value=""
+
+        opcaodeidiomas[opcaodeidiomas.length]=document.getElementById("inpopcoesdeidiomas").value
+        document.getElementById("inpopcoesdeidiomas").value=""
+
+        diretor[diretor.length]=document.getElementById("inpdiretor").value
+        document.getElementById("inpdiretor").value=""
+
+        nota1[nota1.length]=document.getElementById("inpnota1").value
+        document.getElementById("inpnota1").value=""
+
+        nota2[nota2.length]=document.getElementById("inpnota2").value
+        document.getElementById("inpnota2").value=""
+        
+        alert("cadastrado!")
+        document.getElementById("inpnomedofilme").focus()
+
+     
+     
+    }   
+
+
+    function teste()
+     {
+      console.log(filme)
+      console.log(Lancamento)
+      console.log(duracao)
+      console.log(genero)
+      console.log(idiomaoriginal)
+      console.log(opcaodeidiomas)
+      console.log(diretor)
+      console.log(nota1)
+      console.log(nota2)
+     }   
+
+
+
+function pesquisar()
+
+{
+  var filmespesquisados=document.getElementById("inpnomedofilme").value
+   
+  for(i=0;i<filme.length;i++)
+  {
+      
+    if(filme[i]==filmespesquisados)
+    {
+      ultimoregistropesquisado = i
+      document.getElementById('inpduracao').value=duracao[i]
+      document.getElementById("inplancamento").value=Lancamento[i]
+      document.getElementById('inpgenero').value=genero[i]
+      document.getElementById('inpidiomaoriginal').value=idiomaoriginal[i]
+      document.getElementById('inpopcoesdeidiomas').value=opcaodeidiomas[i]
+      document.getElementById('inpdiretor').value=diretor[i]
+      document.getElementById('inpnota1').value=nota1[i]
+      document.getElementById('inpnota2').value=nota2[i]
+      
+      
+    }
+
+
+  }
+
+  alert("achou!")
+}
+
+
+function editar()
+{
+ 
+  filme[ultimoregistropesquisado]=document.getElementById('inpnomedofilme').value
+ 
+  document.getElementById('inpnomedofilme').value=""
+
+ Lancamento[ultimoregistropesquisado]=document.getElementById('inplancamento').value
+ 
+ document.getElementById('inplancamento').value=""
+                         
+  duracao[ultimoregistropesquisado]=document.getElementById('inpduracao').value
+                           
+  document.getElementById('inpduracao').value=""
+      
+  genero[ultimoregistropesquisado]=document.getElementById('inpgenero').value
+                           
+  document.getElementById('inpgenero').value=""
+                           
+  idiomaoriginal[ultimoregistropesquisado]=document.getElementById('inpidiomaoriginal').value
+                        
+  document.getElementById('inpidiomaoriginal').value=""
+                           
+  opcaodeidiomas[ultimoregistropesquisado]=document.getElementById('inpopcoesdeidiomas').value
+                            
+  document.getElementById('inpopcoesdeidiomas').value=""
+                           
+  diretor[ultimoregistropesquisado]=document.getElementById('inpdiretor').value
+                           
+  document.getElementById('inpdiretor').value=""
+                           
+  nota1[ultimoregistropesquisado]=document.getElementById('inpnota1').value
+                           
+  document.getElementById('inpnota1').value=""
+                          
+  nota2[ultimoregistropesquisado]=document.getElementById('inpnota2').value
+                           
+  document.getElementById('inpnota2').value=""
+ 
+  alert("mudou!")
+}
+
+function limpar()
+{
+     for(i=ultimoregistropesquisado;i<filme.length-1;i++)
+    {
+                               
+      filme[i]=filme[i+1]
+      Lancamento[i]=Lancamento[i+1]
+      duracao[i]=duracao[i+1]
+      genero[i]=genero[i+1]
+      idiomaoriginal[i]=idiomaoriginal[i+1]
+      opcaodeidiomas[i]=opcaodeidiomas[i+1]
+      diretor[i]=diretor[i+1]
+      nota1[i]=nota1[i+1]
+      nota2[i]=nota2[i+1]
+    }
+
+    document.getElementById('inpnomedofilme').value=""
+    document.getElementById("inplancamento").value=""
+    document.getElementById('inpduracao').value=""
+    document.getElementById('inpgenero').value=""
+    document.getElementById('inpidiomaoriginal').value=""
+    document.getElementById('inpopcoesdeidiomas').value=""
+    document.getElementById('inpdiretor').value=""
+    document.getElementById('inpnota1').value=""
+    document.getElementById('inpnota2').value=""
+
+    filme.length=filme.length-1
+    Lancamento.length=Lancamento-1
+    duracao.length=duracao.length-1
+    genero.length=genero.length-1
+    idiomaoriginal.length=idiomaoriginal.length-1
+    opcaodeidiomas.length=opcaodeidiomas.length-1
+    diretor.length=diretor.length-1
+    nota1.length=nota1.length-1
+    nota2.length=nota2.length-1
+    alert("apagou!")
+    }                       
+
+    
+    </script>
+</body>
+</html>
